@@ -54,6 +54,7 @@ class Complaint(models.Model):
     EffectiveMontioringM2=models.CharField(max_length=200)
     EffectiveMontioringM3=models.CharField(max_length=200)
     Remarks=models.TextField()
+    File=models.FileField(null=True,blank=True)
     def __str__(self) -> str:
         return self.UniqueComplaintNumber
 
