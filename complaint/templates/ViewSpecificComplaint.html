@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <!--  Prevent admin panel being crawled by search engines -->
+    <meta name="robots" content="none, noarchive" />
+
+    <title>Add complaint | Django site admin</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="/static/vendor/fontawesome-free/css/all.min.css"
+    />
+
+    <!-- Bootstrap and adminLTE -->
+    <link
+      rel="stylesheet"
+      href="/static/vendor/adminlte/css/adminlte.min.css"
+      id="adminlte-css"
+    />
+
+    <!-- Bootswatch theme -->
+
+    <!-- Custom fixes for django -->
+    <link rel="stylesheet" href="/static/jazzmin/css/main.css" />
+
+    <!-- favicons -->
+    <link
+      rel="shortcut icon"
+      href="/static/vendor/adminlte/img/AdminLTELogo.png"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/static/vendor/adminlte/img/AdminLTELogo.png"
+      sizes="32x32"
+      type="image/png"
+    />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/vendor/select2/css/select2.min.css" />
+
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+    <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <script src="/static/admin/js/calendar.js"></script>
+    <script src="/static/admin/js/jquery.init.js"></script>
+    <script src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+    <script src="/static/admin/js/core.js"></script>
+    <script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script src="/static/admin/js/actions.js"></script>
+    <script src="/static/admin/js/urlify.js"></script>
+    <script src="/static/admin/js/prepopulate.js"></script>
+    <script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+  </head>
+  <body
+    class="hold-transition sidebar-mini app-complaint model-complaint change-form accent-primary theme-default"
+    data-admin-utc-offset="0"
+  >
+    <div class="wrapper">
+      <nav
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+        id="jazzy-navbar"
+      >
+        
+     
+        <ul class="navbar-nav ml-auto">
+            Hello {{request.user}}
+          <li class="nav-item dropdown">
+            <a class="nav-link btn" data-toggle="dropdown" href="#" title="gg">
+              <i class="far fa-user" aria-hidden="true"></i>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-lg dropdown-menu-left"
+              id="jazzy-usermenu"
+            >
+              <span class="dropdown-header">Account</span>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-divider"></div>
+              <a href="/logout/" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> Log out
+              </a>
+
+              <div class="dropdown-divider"></div>
+
+             
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      
+
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-auto col-sm-3">
+                <h1 class="m-0">Complaints</h1>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="container-fluid">
+            <section id="content" class="content">
+              <div class="row">
+                <div id="content-main" class="col-12">
+                  <form
+                    enctype="multipart/form-data"
+                    action=""
+                    method="POST"
+                    id="complaint_form"
+                    novalidate
+                  >
+                  {% csrf_token %}
+                   
+
+                    <div class="row">
+                      <div class="col-12 col-lg-9">
+                        <div class="card card-primary card-outline">
+                          <div class="card-header">
+                            <div class="card-title">Add complaint</div>
+                          </div>
+                          <div class="card-body">
+
+                            <div class="form-group field-UniqueComplaintNumber">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_UniqueComplaintNumber"
+                                >
+                                  UniqueComplaintNumber
+                                </label>
+                                <div
+                                  class="col-sm-10 field-UniqueComplaintNumber"
+                                >
+                                  {{Complaint.UniqueComplaintNumber}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-VarrocPlant">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_VarrocPlant"
+                                >
+                                  VarrocPlant
+                                </label>
+                                <div class="col-sm-10 field-VarrocPlant">
+                                
+                                {{Complaint.VarrocPlant}}
+                                  
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-CustomerComplaintNumber"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerComplaintNumber"
+                                >
+                                  CustomerComplaintNumber
+                                </label>
+                                <div
+                                  class="col-sm-10 field-CustomerComplaintNumber"
+                                >
+                                {{Complaint.CustomerComplaintNumber}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-IssueReportedDate">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_IssueReportedDate"
+                                >
+                                  IssueReportedDate
+
+                                </label>
+                                <div class="col-sm-10 field-IssueReportedDate">
+                                  
+                                {{Complaint.IssueReportedDate}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-IssueReportedMonth">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_IssueReportedMonth"
+                                >
+                                  IssueReportedMonth
+                                </label>
+                                <div class="col-sm-10 field-IssueReportedMonth">
+                                 
+                                 {{Complaint.IssueReportedMonth}}
+                                 
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-CustomerName">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerName"
+                                >
+                                  CustomerName
+                                </label>
+                                <div class="col-sm-10 field-CustomerName">
+                                  
+                                  {{Complaint.CustomerName}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-CustomerLocation">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerLocation"
+                                >
+                                  CustomerLocation
+                                </label>
+                                <div class="col-sm-10 field-CustomerLocation">
+                                  
+                                   {{Complaint.CustomerLocation}}
+                                  
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ReportedArea">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ReportedArea"
+                                >
+                                  ReportedArea
+                                </label>
+                                <div class="col-sm-10 field-ReportedArea">
+                                  {{Complaint.ReportedArea}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-NewExisting">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_NewExisting"
+                                >
+                                  NewExisting
+                                </label>
+                                <div class="col-sm-10 field-NewExisting">
+                                 {{Complaint.NewExisting}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-SourceOfComplaint">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_SourceOfComplaint"
+                                >
+                                  SourceOfComplaint
+                                </label>
+                                <div class="col-sm-10 field-SourceOfComplaint">
+                                 
+                                    {{Complaint.SourceOfComplaint}}
+                                 
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ProductCategory">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ProductCategory"
+                                >
+                                  ProductCategory
+                                </label>
+                                <div class="col-sm-10 field-ProductCategory">
+                                  {{Complaint.ProductCategory}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-CustomerPartNumber">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerPartNumber"
+                                >
+                                  CustomerPartNumber
+                                </label>
+                                <div class="col-sm-10 field-CustomerPartNumber">
+                                  {{Complaint.CustomerPartNumber}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-CustomerModel">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerModel"
+                                >
+                                  CustomerModel
+                                </label>
+                                <div class="col-sm-10 field-CustomerModel">
+                                 {{Complaint.CustomerModel}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-PartManufacturingDate">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_PartManufacturingDate"
+                                >
+                                  PartManufacturingDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-PartManufacturingDate"
+                                >
+                                  {{Complaint.PartManufacturingDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-RejectedQuantity">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_RejectedQuantity"
+                                >
+                                  RejectedQuantity
+                                </label>
+                                <div class="col-sm-10 field-RejectedQuantity">
+                                  {{Complaint.RejectedQuantity}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-PPMNonPPM">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_PPMNonPPM"
+                                >
+                                  PPMNonPPM
+                                </label>
+                                <div class="col-sm-10 field-PPMNonPPM">
+                                  
+                                   {{Complaint.PPMNonPPM}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ComplaintRepeated">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ComplaintRepeated"
+                                >
+                                  ComplaintRepeated
+                                </label>
+                                <div class="col-sm-10 field-ComplaintRepeated">
+                                 {{Complaint.ComplaintRepeated}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ProcessDesignSupplier">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ProcessDesignSupplier"
+                                >
+                                  ProcessDesignSupplier
+                                </label>
+                                <div
+                                  class="col-sm-10 field-ProcessDesignSupplier"
+                                >
+                                 {{Complaint.ProcessDesignSupplier}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-FourMCategory">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_FourMCategory"
+                                >
+                                  FourMCategory
+                                </label>
+                                <div class="col-sm-10 field-FourMCategory">
+                                  {{Complaint.FourMCategory}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-CustomerComplaint">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_CustomerComplaint"
+                                >
+                                  CustomerComplaint
+                                </label>
+                                <div class="col-sm-10 field-CustomerComplaint">
+                           
+                                    {{Complaint.CustomerComplaint}}
+                                  
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-DefectDescription">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_DefectDescription"
+                                >
+                                  DefectDescription
+                                </label>
+                                <div class="col-sm-10 field-DefectDescription">
+                                 {{Complaint.DefectDescription}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-VarrocObservation">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_VarrocObservation"
+                                >
+                                  VarrocObservation
+                                </label>
+                                <div class="col-sm-10 field-VarrocObservation">
+                                  {{Complaint.VarrocObservation}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ContainmentAction">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ContainmentAction"
+                                >
+                                  ContainmentAction
+                                </label>
+                                <div class="col-sm-10 field-ContainmentAction">
+                                  {{Complaint.ContainmentAction}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ICATargetDate">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ICATargetDate"
+                                >
+                                  ICATargetDate
+                                </label>
+                                <div class="col-sm-10 field-ICATargetDate">
+                                  {{Complaint.ICATargetDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ICAActualDate">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ICAActualDate"
+                                >
+                                  ICAActualDate
+                                </label>
+                                <div class="col-sm-10 field-ICAActualDate">
+                                  {{Complaint.ICAActualDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-OutflowRootCause">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OutflowRootCause"
+                                >
+                                  OutflowRootCause
+                                </label>
+                                <div class="col-sm-10 field-OutflowRootCause">
+                                  {{Complaint.OutflowRootCause}}
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OutflowRootCauseSideAction"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OutflowRootCauseSideAction"
+                                >
+                                  OutflowRootCauseSideAction
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OutflowRootCauseSideAction"
+                                >
+                               {{Complaint.OutflowRootCauseSideAction}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-OutflowRootCauseResp">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OutflowRootCauseResp"
+                                >
+                                  OutflowRootCauseResp
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OutflowRootCauseResp"
+                                >
+                                  {{Complaint.OutflowRootCauseResp}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OutflowRootCauseTargetDate"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OutflowRootCauseTargetDate"
+                                >
+                                  OutflowRootCauseTargetDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OutflowRootCauseTargetDate"
+                                >
+                            
+                                   {{Complaint.OutflowRootCauseTargetDate}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OutflowRootCauseActualDate"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OutflowRootCauseActualDate"
+                                >
+                                  OutflowRootCauseActualDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OutflowRootCauseActualDate"
+                                >
+                                  
+                                    {{Complaint.OutflowRootCauseActualDate}}
+                                
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-OccurenceRootCause">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OccurenceRootCause"
+                                >
+                                  OccurenceRootCause
+                                </label>
+                                <div class="col-sm-10 field-OccurenceRootCause">
+                                  {{Complaint.OccurenceRootCause}}
+                                 
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OccurenceRootCauseSideAction"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OccurenceRootCauseSideAction"
+                                >
+                                  OccurenceRootCauseSideAction
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OccurenceRootCauseSideAction"
+                                >
+                                  {{Complaint.OccurenceRootCauseSideAction}}
+                                  
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OccurenceRootCauseResp"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OccurenceRootCauseResp"
+                                >
+                                  OccurenceRootCauseResp
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OccurenceRootCauseResp"
+                                >
+                                 
+                                    {{Complaint.OccurenceRootCauseResp}}
+                                 
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OccurenceRootCauseTargetDate"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OccurenceRootCauseTargetDate"
+                                >
+                                  OccurenceRootCauseTargetDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OccurenceRootCauseTargetDate"
+                                >
+                                    {{Complaint.OccurenceRootCauseTargetDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-OccurenceRootCauseActualDate"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_OccurenceRootCauseActualDate"
+                                >
+                                  OccurenceRootCauseActualDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-OccurenceRootCauseActualDate"
+                                >
+                                  {{Complaint.OccurenceRootCauseActualDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-SystemAction">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_SystemAction"
+                                >
+                                  SystemAction
+                                </label>
+                                <div class="col-sm-10 field-SystemAction">
+                                  {{Complaint.SystemAction}}
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-SustenanceAction">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_SustenanceAction"
+                                >
+                                  SustenanceAction
+                                </label>
+                                <div class="col-sm-10 field-SustenanceAction">
+                                  {{Complaint.SustenanceAction}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-Status">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_Status"
+                                >
+                                  Status
+                                </label>
+                                <div class="col-sm-10 field-Status">
+                                 {{Complaint.Status}}
+
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-TargetDateForActionVerification"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_TargetDateForActionVerification"
+                                >
+                                  TargetDateForActionVerification
+                                </label>
+                                <div
+                                  class="col-sm-10 field-TargetDateForActionVerification"
+                                >
+                                  {{Complaint.TargetDateForActionVerification}}
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="form-group field-ActualDateForActionVerification"
+                            >
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ActualDateForActionVerification"
+                                >
+                                  ActualDateForActionVerification
+                                </label>
+                                <div
+                                  class="col-sm-10 field-ActualDateForActionVerification"
+                                >
+                                 {{Complaint.ActualDateForActionVerification}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ComplaintClosureDate">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ComplaintClosureDate"
+                                >
+                                  ComplaintClosureDate
+                                </label>
+                                <div
+                                  class="col-sm-10 field-ComplaintClosureDate"
+                                >
+                                  {{Complaint.ComplaintClosureDate}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-Ageing">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_Ageing"
+                                >
+                                  Ageing
+                                </label>
+                                <div class="col-sm-10 field-Ageing">
+                                  {{Complaint.Ageing}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-HDApplicablity">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_HDApplicablity"
+                                >
+                                  HDApplicablity
+                                </label>
+                                <div class="col-sm-10 field-HDApplicablity">
+                                 {{Complaint.HDApplicablity}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-HDModels">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_HDModels"
+                                >
+                                  HDModels
+                                </label>
+                                <div class="col-sm-10 field-HDModels">
+                                  {{Complaint.HDModels}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-ProductCategoryRemark">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_ProductCategoryRemark"
+                                >
+                                  ProductCategoryRemark
+                                </label>
+                                <div
+                                  class="col-sm-10 field-ProductCategoryRemark"
+                                >
+                                  {{Complaint.ProductCategoryRemark}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-DocumentUploaded">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_DocumentUploaded"
+                                >
+                                  DocumentUploaded
+                                </label>
+                                <div class="col-sm-10 field-DocumentUploaded">
+                                 Complaint.DocumentUploaded}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-EffectiveMontioringM1">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_EffectiveMontioringM1"
+                                >
+                                  EffectiveMontioringM1
+                                </label>
+                                <div
+                                  class="col-sm-10 field-EffectiveMontioringM1"
+                                >
+                                  {{Complaint.EffectiveMontioringM1}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-EffectiveMontioringM2">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_EffectiveMontioringM2"
+                                >
+                                  EffectiveMontioringM2
+                                </label>
+                                <div
+                                  class="col-sm-10 field-EffectiveMontioringM2"
+                                >
+                                {{Complaint.EffectiveMontioringM2}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-EffectiveMontioringM3">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_EffectiveMontioringM3"
+                                >
+                                  EffectiveMontioringM3
+                                </label>
+                                <div
+                                  class="col-sm-10 field-EffectiveMontioringM3"
+                                >
+                                {{Complaint.EffectiveMontioringM3}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group field-Remarks">
+                              <div class="row">
+                                <label
+                                  class="col-sm-2 text-left"
+                                  for="id_Remarks"
+                                >
+                                  Remarks
+                                </label>
+                                <div class="col-sm-10 field-Remarks">
+                                  {{Complaint.Remarks}}
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div>
+                            
+
+                          <!--   <div class="form-group field-File">
+                              <div class="row">
+                                <label class="col-sm-2 text-left" for="id_File">
+                                  File
+                                </label>
+                                <div class="col-sm-10 field-File">
+                                  <input type="file" name="File" id="id_File" />
+
+                                  <div class="help-block red"></div>
+
+                                  <div class="help-block text-red"></div>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+
+                      
+
+                      <script
+                        type="text/javascript"
+                        id="django-admin-form-add-constants"
+                        src="/static/admin/js/change_form.js"
+                        data-model-name="complaint"
+                      ></script>
+
+                      <script
+                        id="django-admin-prepopulated-fields-constants"
+                        src="/static/admin/js/prepopulate_init.js"
+                        data-prepopulated-fields="[]"
+                      ></script>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer class="main-footer">
+        
+
+        <strong>Copyright &copy; 2022 .</strong> All rights reserved.
+      </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/static/vendor/adminlte/js/adminlte.min.js"></script>
+    <!-- Django customisations -->
+    <script src="/static/jazzmin/js/main.js"></script>
+
+    <script
+      type="text/javascript"
+      src="/static/vendor/select2/js/select2.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/static/jazzmin/js/change_form.js"
+    ></script>
+  </body>
+</html>
